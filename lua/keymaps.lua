@@ -22,14 +22,11 @@ vim.keymap.set('n', '<C-l>', '<cmd>bn<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '<C-j>', '<cmd>buffers<CR>', { desc = 'List buffers' })
 vim.keymap.set('n', '<C-k>', '<cmd>buffer 1<CR>', { desc = 'First buffer' })
 
--- Keybinds to make split navigation easier.
---  Use arrow keys to switch between windows
---
---  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<left>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<right>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<down>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<up>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+--  Use arrow keys to move within wrapped line
+vim.keymap.set('n', '<left>', 'g0', { desc = 'Move to left end of screen, wrapped line (g0)' })
+vim.keymap.set('n', '<right>', 'g$', { desc = 'Move to right end of screen, wrapped line(g$)' })
+vim.keymap.set('n', '<down>', 'gj', { desc = 'Move down wrapped line (gj)' })
+vim.keymap.set('n', '<up>', 'gk', { desc = 'Move up wrapped line (gk)' })
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
