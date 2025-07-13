@@ -16,15 +16,11 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- Navigate buffers with control and hjkl in normal mode.
-vim.keymap.set('n', '<C-h>', '<cmd>bp<CR>', { desc = 'Previous buffer' })
-vim.keymap.set('n', '<C-l>', '<cmd>bn<CR>', { desc = 'Next buffer' })
-vim.keymap.set('n', '<C-j>', '<cmd>buffers<CR>', { desc = 'List buffers' })
-vim.keymap.set('n', '<C-k>', '<cmd>buffer 1<CR>', { desc = 'First buffer' })
+-- Navigate buffer next and previous
+vim.keymap.set('n', '<leader>p', '<cmd>bp<CR>', { desc = 'Previous buffer (:bp)' })
+vim.keymap.set('n', '<leader>n', '<cmd>bn<CR>', { desc = 'Next buffer (:bn)' })
 
 --  Use arrow keys to move within wrapped line
-vim.keymap.set('n', '<left>', 'g0', { desc = 'Move to left end of screen, wrapped line (g0)' })
-vim.keymap.set('n', '<right>', 'g$', { desc = 'Move to right end of screen, wrapped line(g$)' })
 vim.keymap.set('n', '<down>', 'gj', { desc = 'Move down wrapped line (gj)' })
 vim.keymap.set('n', '<up>', 'gk', { desc = 'Move up wrapped line (gk)' })
 
@@ -47,5 +43,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
+
+-- Insert mode backspace and delete word with ALt+backspace and Alt+d
+vim.keymap.set('i', '<M-BS>', '<C-w>', { noremap = true, silent = true })
+vim.keymap.set('i', '<M-d>', '<Esc>dea', { noremap = true, silent = true })
 
 -- vim: ts=2 sts=2 sw=2 et
